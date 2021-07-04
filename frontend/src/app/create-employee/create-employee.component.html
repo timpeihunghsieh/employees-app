@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="py-2 text-center">
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 order-md-1">
+      <h4 class="mb-3">Employee Information</h4>
+      <form class="needs-validation" [ngClass]="{'was-validated': submitted}"
+            novalidate [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">First name</label>
+            <input type="text" class="form-control" id="firstName"
+                   placeholder="" value="" required formControlName="name">
+            <div class="invalid-feedback"
+                 *ngIf="submitted && myForm.name.errors?.required">
+              Valid first name is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email"
+                 placeholder="you@example.com" formControlName="email"
+                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+          <div class="invalid-feedback"
+               *ngIf="submitted && myForm.email.errors?.required">
+            Please enter a valid email address.
+          </div>
+          <div class="invalid-feedback"
+               *ngIf="submitted && myForm.email.errors?.pattern">
+            Enter email address with the correct format.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="text" class="form-control" id="phoneNumber"
+                placeholder="5551234567" formControlName="phoneNumber"
+                pattern="^[0-9]*$" required>
+          <div class="invalid-feedback"
+               *ngIf="submitted && myForm.phoneNumber.errors?.required">
+            Please enter a valid phone number.
+          </div>
+          <div class="invalid-feedback"
+               *ngIf="submitted && myForm.phoneNumber.errors?.pattern">
+            Enter Numbers Only
+          </div>
+        </div>
+
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">
+          Create Employee
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
